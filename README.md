@@ -30,4 +30,8 @@ This project is focused on deploying on Google cloud.
 
 For unit tests:
 1. `export TRAMPOLINE_CI='1'`
-2. `python manage.py test`
+2. `python manage.py test
+
+## Migrations
+
+For migrations, add `BQ_ADMIN_USERNAME` and `BQ_ADMIN_PASSWORD` to virtual environment

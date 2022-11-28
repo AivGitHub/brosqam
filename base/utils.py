@@ -1,0 +1,31 @@
+from typing import Tuple
+
+from django.conf import settings
+from django.contrib.auth.models import User
+from django.db import IntegrityError, transaction
+from django.db.backends.postgresql.schema import DatabaseSchemaEditor
+from django.db.migrations.state import StateApps
+
+
+def create_superuser(apps: StateApps, schema_editor: DatabaseSchemaEditor) -> Tuple[User, bool]:
+    """ Dynamically create an admin user as part of a migration
+    """
+    if settings.TRAMPOLINE_CI:
+        admin_username = 'admin'
+        admin_password = 'test'
+    else:
+        admin_username = settings.ENV.get_value('BQ_ADMIN_USERNAME')
+        admin_password = settings.ENV.get_value('BQ_ADMIN_PASSWORD')
+
+    with transaction.atomic():
+        try:
+            user = User.objects.create_superuser(admin_username, password=admin_password.strip())
+        except IntegrityError:
+            # User already exists
+            pass
+        else:
+            return user, True
+
+    user = User.objects.get(username=admin_username)
+
+    return user, False
