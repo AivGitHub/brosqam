@@ -16,7 +16,7 @@ Including another URLconf
 from django.conf import settings
 from django.contrib import admin
 from django.contrib.staticfiles.urls import staticfiles_urlpatterns
-from django.urls import path
+from django.urls import include, path
 
 from api.views import Health
 
@@ -25,6 +25,10 @@ urlpatterns = [
     path('admin/', admin.site.urls),
     path('health/', Health.as_view(), name='health'),
 ]
+
+
+if settings.ENABLE_API:
+    urlpatterns += [path('api/', include('api.urls'), name='api'), ]
 
 
 if settings.DEBUG:

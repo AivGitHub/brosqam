@@ -23,6 +23,10 @@ BASE_DIR = Path(__file__).resolve().parent.parent
 
 
 # [Custom]
+# [Features]
+ENABLE_API = False
+# [/Features]
+
 PROJECT_NAME = 'brosqam'
 
 ENV_FILE_NAME = os.environ.get('BQ_ENV_NAME', '.env')
