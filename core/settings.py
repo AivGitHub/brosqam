@@ -74,6 +74,13 @@ DEBUG = ENV.get_value('BQ_DEBUG', default=False, cast=bool)
 ALLOWED_HOSTS = ENV.get_value('BQ_ALLOWED_HOSTS', cast=list)
 
 
+##################
+# AUTHENTICATION #
+##################
+
+AUTH_USER_MODEL = 'accounts.User'
+
+
 # Application definition
 INSTALLED_APPS = [
     'django.contrib.admin',
@@ -82,6 +89,7 @@ INSTALLED_APPS = [
     'django.contrib.sessions',
     'django.contrib.messages',
     'django.contrib.staticfiles',
+    'accounts',
     'api',
     'authentication',
     'base',

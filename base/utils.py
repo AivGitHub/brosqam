@@ -1,10 +1,11 @@
 from typing import Tuple
 
 from django.conf import settings
-from django.contrib.auth.models import User
 from django.db import IntegrityError, transaction
 from django.db.backends.postgresql.schema import DatabaseSchemaEditor
 from django.db.migrations.state import StateApps
+
+from accounts.models import User
 
 
 def create_superuser(apps: StateApps, schema_editor: DatabaseSchemaEditor) -> Tuple[User, bool]:
