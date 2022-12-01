@@ -16,7 +16,7 @@ grpcio-status==1.51.1
 gunicorn==20.1.0
 idna==3.4
 proto-plus==1.22.1
-protobuf==4.21.9
+protobuf==4.21.10
 psycopg2-binary==2.9.5
 py==1.11.0
 pyasn1==0.4.8
