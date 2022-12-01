@@ -109,3 +109,6 @@ instructions.txt
 log/
 static/
 .env.dev
+
+# WSGI
+pids/*.pid

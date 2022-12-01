@@ -18,4 +18,4 @@ fi
 
 echo "Starting service on port $PORT"
 echo "To change port set port to PORT virtual environment variable"
-gunicorn -b :$PORT core.wsgi:application
+uwsgi --http :$PORT --ini configurations/server.ini

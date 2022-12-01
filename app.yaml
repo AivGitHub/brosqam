@@ -1,5 +1,5 @@
 runtime: python39
-entrypoint: gunicorn -b :$PORT core.wsgi:application
+entrypoint: uwsgi --http :$PORT --ini configurations/server.ini
 
 handlers:
 # This configures Google App Engine to serve the files in the app's static
